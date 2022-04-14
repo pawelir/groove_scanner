@@ -1,0 +1,7 @@
+<launch>
+    <group ns="groove_scanner">
+        <rosparam file="$(find groove_scanner)/config/groove_scanner_node.yaml" />
+    </group>
+    
+    <node pkg="groove_scanner" type="groove_scanner_node.py" name="groove_scanner" output="screen"/>
+</launch>

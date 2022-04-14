@@ -1,0 +1,6 @@
+deviation_threshold: 0.04 #LiDAR readings threshold of deviation -> TIM571
+lidar_rays_limit_left: 105
+lidar_rays_limit_right: 440
+# deviation_threshold: 0.035 #LiDAR readings threshold of deviation -> LMS111
+# lidar_rays_limit_left: 150
+# lidar_rays_limit_right: 570
