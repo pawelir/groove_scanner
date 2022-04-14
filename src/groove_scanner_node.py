@@ -114,5 +114,4 @@ if __name__=="__main__":
         groove_scanner = GrooveScanner()
     except rospy.ROSInterruptException:
         pass
-
     rospy.spin()
