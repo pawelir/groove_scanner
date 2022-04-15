@@ -14,14 +14,14 @@ class GrooveScannerNode:
         self.grooves_indexes_pub = rospy.Publisher("/groove_scanner/grooves_indexes",
                                                    Int32MultiArray,
                                                    queue_size=1)
-        self._rate = rospy.Rate(20)
+        self._rate = rospy.Rate(25)
         self._load_params()
         self._laser_readings = []
         self._groove_scanner = GrooveScanner(groove_depth=self._deviation_threshold)
 
         while self.laser_sub.get_num_connections() < 1 or not self._laser_readings:
             rospy.logwarn("Waiting for topic /rotrac_e2/laser/scan")
-            rospy.sleep(0.05)
+            rospy.sleep(0.2)
         rospy.loginfo('[groove_scanner] Node initialized!')
         
         while not rospy.is_shutdown():
