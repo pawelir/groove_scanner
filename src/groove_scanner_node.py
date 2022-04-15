@@ -67,11 +67,6 @@ class GrooveScanner:
         
         self.grooves_indexes = [x for x in x_vector if abs(approx_function(x) - laser_readings_array[x]) >= self.deviation_threshold]
 
-        # ------- DISPLAY RESULTS -------
-        # plt.plot(x,y,'.',x,p(x),'-',x,p(x)+0.035,'-',x,p(x)-0.035,'-')
-        # plt.show()
-        # ------- DISPLAY RESULTS -------
-
     def get_grooves_indexes(self) -> List[int]:
         '''
         This function points out the approximated index of left and right grooves.
@@ -90,12 +85,6 @@ class GrooveScanner:
             second_groove_indexes = temp_list[1]
         except:
             second_groove_indexes = []
-        
-        # ------- DISPLAY RESULTS -------
-        # rospy.loginfo(f'Full list of indexes detected as grooves: {self.grooves_indexes}')
-        # print(f'List of indexes of the first groove: {first_groove_indexes}')
-        # print(f'List of indexes of the second groove: {second_groove_indexes}')
-        # ------- DISPLAY RESULTS -------
 
         first_index = self._calculate_mean_index(first_groove_indexes)
         second_index = self._calculate_mean_index(second_groove_indexes)
