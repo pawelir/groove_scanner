@@ -17,7 +17,7 @@ class GrooveScannerNode:
         self._rate = rospy.Rate(25)
         self._load_params()
         self._laser_readings = []
-        self._groove_scanner = GrooveScanner(groove_depth=self._deviation_threshold)
+        self._groove_scanner = GrooveScanner(groove_depth=self._groove_depth)
 
         while self.laser_sub.get_num_connections() < 1 or not self._laser_readings:
             rospy.logwarn("Waiting for topic /rotrac_e2/laser/scan")
@@ -32,7 +32,7 @@ class GrooveScannerNode:
         self._laser_readings = [i for i in msg.ranges[self._lidar_rays_limit_left:self._lidar_rays_limit_right] if i != Inf]
 
     def _load_params(self) -> None:
-        self._deviation_threshold = rospy.get_param("/groove_scanner/deviation_threshold")
+        self._groove_depth = rospy.get_param("/groove_scanner/groove_depth")
         self._lidar_rays_limit_left = rospy.get_param("/groove_scanner/lidar_rays_limit_left")
         self._lidar_rays_limit_right = rospy.get_param("/groove_scanner/lidar_rays_limit_right")
 
